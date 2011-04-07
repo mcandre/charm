@@ -8,3 +8,28 @@ EXAMPLE
 
 	$ make
 	$ ./hellocharm
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	                 Hello Charm! Press 'q' or Control+C to quit.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

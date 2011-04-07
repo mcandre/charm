@@ -7,7 +7,7 @@
 int main() {
 	start_charm();
 
-	center_string("Hello Charm! Press \'q\' to quit.");
+	center_string("Hello Charm! Press \'q\' or Control+C to quit.");
 
 	key k = KEY_UNKNOWN;
 
