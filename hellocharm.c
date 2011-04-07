@@ -5,34 +5,9 @@
 int main() {
 	start_charm();
 
-	printf("Getting width...\n");
+	add_string("Hello Charm! Press Control+C to quit.");
 
-	int w = get_width();
-
-	printf("width = %d\n", w);
-
-	printf("Getting height...\n");
-
-	int h = get_height();
-
-	printf("height = %d\n", h);
-
-	printf("constructing message...\n");
-
-	char *message = (char *) GC_MALLOC(30 * sizeof(char));
-
-	printf("zeroing message...\n");
-
-	int i;
-	for (i = 0; i < 30; i++) { message[i] = '\0'; }
-
-	sprintf(message, "Width: %d Height: %d", w, h);
-
-	printf("message = %s\n", message);
-
-	add_string(message);
-
-	// ...
+	while(1) {}
 
 	end_charm();
 

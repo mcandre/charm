@@ -8,6 +8,9 @@
 // ANSI Escape Codes
 // http://en.wikipedia.org/wiki/ANSI_escape_code
 
+// Terminal information
+// http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man4/tty.4.html
+
 int get_width() {
 	struct winsize ws;
 	ioctl(0, TIOCGWINSZ, &ws);
@@ -36,6 +39,7 @@ void move_cursor(int x, int y) {
 
 void add_string(char *s) {
 	printf("%s", s);
+	fflush(stdout);
 }
 
 void clear_screen() {
@@ -58,7 +62,8 @@ void start_charm() {
 }
 
 void end_charm() {
-	// clear_screen();
+	move_cursor(0, 0);
+	clear_screen();
 	show_cursor();
 
 	// ...
