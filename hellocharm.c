@@ -1,15 +1,19 @@
 #include "charm.h"
+#include "key.h"
 #include <gc.h>
 #include <stdio.h>
+#include <string.h>
 
 int main() {
 	start_charm();
 
-	put_char('c');
+	center_string("Hello Charm! Press \'q\' to quit.");
 
-	// center_string("Hello Charm! Press Control+C to quit.");
+	key k = KEY_UNKNOWN;
 
-	while(1) {}
+	while(k != KEY_Q) {
+		k = get_key();
+	}
 
 	end_charm();
 

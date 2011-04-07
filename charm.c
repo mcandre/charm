@@ -1,6 +1,7 @@
 #include "charm.h"
 #include <gc.h>
 #include <sys/ioctl.h>
+#include <termios.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +12,12 @@
 
 // Terminal information
 // http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man4/tty.4.html
+
+// Disabling echo
+// http://www.gnu.org/s/hello/manual/libc/getpass.html
+
+int pos_x;
+int pos_y;
 
 int get_width() {
 	struct winsize ws;
@@ -26,26 +33,64 @@ int get_height() {
 	return ws.ws_row;
 }
 
-void hide_cursor() {
+void cursor_off() {
 	printf("\033[?25l");
 }
 
-void show_cursor() {
+void cursor_on() {
 	printf("\033[?25h");
 }
 
+void echo_off() {
+	struct termios term;
+	tcgetattr(fileno(stdout), &term);
+	term.c_lflag &= ~ECHO;
+	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
+}
+
+void echo_on() {
+	struct termios term;
+	tcgetattr(fileno(stdout), &term);
+	term.c_lflag |= ECHO;
+	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
+}
+
+void raw_on() {
+	struct termios term;
+	tcgetattr(fileno(stdout), &term);
+	term.c_lflag &= ~ICANON;
+	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
+}
+
+void raw_off() {
+	struct termios term;
+	tcgetattr(fileno(stdout), &term);
+	term.c_lflag |= ICANON;
+	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
+}
+
 void move_cursor(int x, int y) {
+	pos_x = x;
+	pos_y = y;
 	printf("\033[%d;%dH", y, x);
 }
 
 void put_char(char c) {
-	putchar(c);
-	fflush(stdout);
+	if (c == '\n') {
+		move_cursor(0, pos_y + 1);
+	}
+	else {
+		putchar(c);
+		fflush(stdout);
+		pos_x++;
+	}
 }
 
 void put_string(char *s) {
-	printf("%s", s);
-	fflush(stdout);
+	int i;
+	for (i = 0; i < strlen(s); i++) {
+		put_char(s[i]);
+	}
 }
 
 void center_string(char *s) {
@@ -67,7 +112,9 @@ void start_charm() {
 
 	signal(SIGINT, handle_signal);
 
-	hide_cursor();
+	cursor_off();
+	echo_off();
+	raw_on();
 	move_cursor(0, 0);
 	clear_screen();
 }
@@ -75,9 +122,7 @@ void start_charm() {
 void end_charm() {
 	move_cursor(0, 0);
 	clear_screen();
-	show_cursor();
-
-	// ...
+	cursor_on();
+	echo_on();
+	raw_off();
 }
-
-// ...
