@@ -1,0 +1,7 @@
+#include "charm.h"
+
+int main() {
+	/* ... */
+
+	return 0;
+}
