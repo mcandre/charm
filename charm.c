@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // ANSI Escape Codes
 // http://en.wikipedia.org/wiki/ANSI_escape_code
@@ -37,9 +38,19 @@ void move_cursor(int x, int y) {
 	printf("\033[%d;%dH", y, x);
 }
 
-void add_string(char *s) {
+void put_char(char c) {
+	putchar(c);
+	fflush(stdout);
+}
+
+void put_string(char *s) {
 	printf("%s", s);
 	fflush(stdout);
+}
+
+void center_string(char *s) {
+	move_cursor((get_width() - strlen(s))/2, get_height()/2);
+	put_string(s);
 }
 
 void clear_screen() {

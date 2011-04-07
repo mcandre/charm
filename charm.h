@@ -10,7 +10,9 @@ void hide_cursor();
 void show_cursor();
 
 void move_cursor(int x, int y);
-void add_string(char *s);
+void put_char(char c);
+void put_string(char *s);
+void center_string(char *s);
 
 void clear_screen();
 
