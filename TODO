@@ -2,4 +2,6 @@
 
 +Write ddr.c, which uses arrow keys for input
 
--Install charm as a library
++Install charm as a library
+
+-Write Linux and Windows makefiles
