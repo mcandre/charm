@@ -45,6 +45,8 @@ void draw_hoot(int hoot) {
 int main() {
 	srand(time(NULL));
 
+	GC_INIT();
+
 	start_charm();
 
 	hcenter_string("DDR: How fast can you play?");

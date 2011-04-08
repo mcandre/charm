@@ -1,5 +1,4 @@
 #include "charm.h"
-#include <gc.h>
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <signal.h>
@@ -108,8 +107,6 @@ void handle_signal(int signal) {
 }
 
 void start_charm() {
-	GC_INIT();
-
 	signal(SIGINT, handle_signal);
 
 	cursor_off();
