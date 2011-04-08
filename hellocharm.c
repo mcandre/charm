@@ -6,11 +6,11 @@
 int main() {
 	start_charm();
 
-	center_string("Hello Charm! Press \'q\' or Control+C to quit.");
+	vcenter_string("Hello Charm! Press Escape, q, or Control-C to quit.");
 
 	key k = KEY_UNKNOWN;
 
-	while(k != KEY_Q) {
+	while(k != KEY_ESCAPE && k != KEY_Q) {
 		k = get_key();
 	}
 

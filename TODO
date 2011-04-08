@@ -1,5 +1,5 @@
 +Write hellocharm.c, which displays the text "Hello Charm!" in the dead center of a terminal window.
 
--Write ddr.c, which uses arrow keys for input
++Write ddr.c, which uses arrow keys for input
 
 -Install charm as a library
