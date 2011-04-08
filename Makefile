@@ -1,7 +1,9 @@
-EXECUTABLE=hellocharm
+all: hellocharm.c charm.c charm.h
+	gcc -o hellocharm hellocharm.c charm.c charm.h -Wall -lgc
 
-all: hellocharm.c charm.c charm.h key.c key.h
-	gcc -o $(EXECUTABLE) hellocharm.c charm.c charm.h key.c key.h -Wall -lgc
+ddr: ddr.c charm.c charm.h
+	gcc -o ddr ddr.c charm.c charm.h -Wall -lgc
 
 clean:
-	-rm $(EXECUTABLE)
+	-rm hellocharm
+	-rm ddr

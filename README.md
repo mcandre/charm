@@ -19,7 +19,7 @@ EXAMPLE
 	
 	
 	
-	                                             Hello Charm! Press 'q' or Control+C to quit.
+	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	
 	
 	
