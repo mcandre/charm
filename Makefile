@@ -19,10 +19,12 @@ ddr: ddr.c libcharm.dylib
 
 install: charm.h libcharm.dylib
 	cp charm.h /usr/include
+	cp charm.c /usr/include
 	cp libcharm.dylib /usr/lib
 
 uninstall:
 	-rm /usr/lib/libcharm.dylib
+	-rm /usr/include/charm.c
 	-rm /usr/include/charm.h
 
 clean:
