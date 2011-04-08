@@ -15,11 +15,13 @@ hellocharm: hellocharm.c libcharm.dylib
 ddr: ddr.c libcharm.dylib
 	gcc -o ddr ddr.c -Wall $(LGC) -L. -lcharm
 
-install: libcharm.dylib
-	cp libcharm.dylib /usr/lib/
+install: charm.h libcharm.dylib
+	cp charm.h /usr/include
+	cp libcharm.dylib /usr/lib
 
 uninstall:
 	-rm /usr/lib/libcharm.dylib
+	-rm /usr/include/charm.h
 
 clean:
 	-rm ddr
