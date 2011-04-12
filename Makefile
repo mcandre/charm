@@ -1,6 +1,6 @@
 CFLAGS=-arch i386 -arch x86_64
 ICHARM=-I/usr/include
-LGC=-L/opt/local/lib -lgc
+LGC=-lgc
 LCHARM=-L. -lcharm
 
 all: hellocharm
