@@ -70,7 +70,7 @@ void move_cursor(int x, int y) {
 	fflush(stdout);
 }
 
-void put_char(char c) {
+void blot_char(char c) {
 	if (c == '\n') {
 		pos_y++;
 		move_cursor(0, pos_y);
@@ -82,21 +82,21 @@ void put_char(char c) {
 	}
 }
 
-void put_string(char *s) {
+void blot_string(char *s) {
 	int i;
 	for (i = 0; i < strlen(s); i++) {
-		put_char(s[i]);
+		blot_char(s[i]);
 	}
 }
 
 void hcenter_string(char *s) {
 	move_cursor((get_width() - strlen(s))/2, pos_y);
-	put_string(s);
+	blot_string(s);
 }
 
 void vcenter_string(char *s) {
 	move_cursor((get_width() - strlen(s))/2, get_height()/2);
-	put_string(s);
+	blot_string(s);
 }
 
 void clear_screen() { printf("\033[2J"); fflush(stdout); }

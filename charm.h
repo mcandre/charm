@@ -19,8 +19,8 @@ void raw_on();
 void raw_off();
 
 void move_cursor(int x, int y);
-void put_char(char c);
-void put_string(char *s);
+void blot_char(char c);
+void blot_string(char *s);
 void hcenter_string(char *s);
 void vcenter_string(char *s);
 
