@@ -19,7 +19,7 @@ EXAMPLE
 	
 	
 	
-	                                     Hello Charm! Press Escape-Escape, q, or Control-C to quit.
+	                                     Hello Charm! Press Escape, q, or Control-C to quit.
 	
 	
 	
