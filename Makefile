@@ -17,7 +17,7 @@ hellocharm: hellocharm.c libcharm.dylib
 ddr: ddr.c libcharm.dylib
 	gcc -o ddr ddr.c -Wall $(LGC) $(ICHARM) $(LCHARM)
 
-install: charm.h libcharm.dylib
+install: charm.h charm.c libcharm.dylib
 	cp charm.h /usr/include
 	sed s/'#include "charm.h"'/'#include <charm.h>'/ charm.c > /usr/include/charm.c
 	cp libcharm.dylib /usr/lib
