@@ -5,7 +5,7 @@
 int main() {
 	start_charm();
 
-	vcenter_string("Hello Charm! Press Escape, q, or Control-C to quit.");
+	vcenter_string("Hello Charm! Press Escape-Escape, q, or Control-C to quit.");
 
 	key k = KEY_UNKNOWN;
 
