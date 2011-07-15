@@ -18,6 +18,9 @@ void echo_on();
 void raw_on();
 void raw_off();
 
+void blocking_off();
+void blocking_on();
+
 void move_cursor(int x, int y);
 void blot_char(char c);
 void blot_string(char *s);
@@ -147,6 +150,7 @@ typedef enum {
 	KEY_UNKNOWN
 } key;
 
+key parse_key(char *buf);
 key get_key();
 
 #endif

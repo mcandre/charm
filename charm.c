@@ -1,6 +1,7 @@
 #include "charm.h"
 #include <sys/ioctl.h>
 #include <termios.h>
+#include <unistd.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,6 +64,20 @@ void raw_off() {
 	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
+void blocking_off() {
+	struct termios term;
+	tcgetattr(fileno(stdout), &term);
+	term.c_cc[VMIN] = 0;
+	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
+}
+
+void blocking_on() {
+	struct termios term;
+	tcgetattr(fileno(stdout), &term);
+	term.c_cc[VMIN] = 1;
+	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
+}
+
 void move_cursor(int x, int y) {
 	pos_x = x;
 	pos_y = y;
@@ -112,6 +127,7 @@ void start_charm() {
 	cursor_off();
 	echo_off();
 	raw_on();
+	blocking_off();
 	move_cursor(1, 1);
 	clear_screen();
 }
@@ -119,15 +135,14 @@ void start_charm() {
 void end_charm() {
 	move_cursor(1, 1);
 	clear_screen();
-	cursor_on();
-	echo_on();
+	blocking_on();
 	raw_off();
+	echo_on();
+	cursor_on();
 }
 
-key get_key() {
-	char c = getchar();
-
-	switch(c) {
+key parse_key(char *buf) {
+	switch(buf[0]) {
 		case '\x7f':
 		case '\b': return KEY_BACKSPACE;
 		case '\t': return KEY_TAB;
@@ -236,19 +251,46 @@ key get_key() {
 		case '~': return KEY_TILDE;
 
 		case '\x1b':
-			c = getchar();
-			switch(c) {
+			switch(buf[1]) {
+				case '\0': return KEY_ESCAPE;
 				case '[':
-					c = getchar();
-					switch(c) {
+					switch(buf[2]) {
 						case 'A': return KEY_UP;
 						case 'B': return KEY_DOWN;
 						case 'C': return KEY_RIGHT;
 						case 'D': return KEY_LEFT;
 					}
-				case '\x1b': return KEY_ESCAPE;
 			}
 
 		default: return KEY_UNKNOWN;
 	}
+}
+
+key get_key() {
+	char *buf = (char *) malloc(3 * sizeof(char));
+	buf[0] = 0;
+	buf[1] = 0;
+	buf[2] = 0;
+
+	int i = 0;
+
+	char c;
+
+	int n = 0;
+
+	// Read at least one character.
+	while (n < 1) {
+		n = read(fileno(stdin), &c, 1);
+	}
+
+	while (i < 3 && n > 0) {
+		buf[i++] = c;
+		n = read(fileno(stdin), &c, 1);
+	}
+
+	key k = parse_key(buf);
+
+	free(buf);
+
+	return k;
 }
