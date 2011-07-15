@@ -16,16 +16,16 @@ void draw_arrow(key arrow) {
 
 	switch(arrow) {
 		case KEY_UP:
-			hcenter_string("↑");
+			hcenter_string("^");
 			break;
 		case KEY_DOWN:
-			hcenter_string("↓");
+			hcenter_string("v");
 			break;
 		case KEY_RIGHT:
-			hcenter_string("→");
+			hcenter_string(">");
 			break;
 		case KEY_LEFT:
-			hcenter_string("←");
+			hcenter_string("<");
 			break;
 		default:;
 	}
