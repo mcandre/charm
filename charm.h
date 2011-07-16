@@ -3,8 +3,8 @@
 
 #define CHARM_VERSION "0.0.1"
 
-int pos_x;
-int pos_y;
+// int pos_x;
+// int pos_y;
 
 int get_width();
 int get_height();
@@ -21,6 +21,8 @@ void raw_off();
 void blocking_off();
 void blocking_on();
 
+int get_x();
+int get_y();
 void move_cursor(int x, int y);
 void blot_char(char c);
 void blot_string(char *s);

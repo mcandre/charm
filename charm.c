@@ -78,6 +78,14 @@ void blocking_on() {
 	tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
+int get_x() {
+	return pos_x;
+}
+
+int get_y() {
+	return pos_y;
+}
+
 void move_cursor(int x, int y) {
 	pos_x = x;
 	pos_y = y;
