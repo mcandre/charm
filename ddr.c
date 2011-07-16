@@ -5,14 +5,15 @@
 #include <time.h>
 
 void draw_score(int score) {
-	move_cursor(1, 3);
+	move_cursor(0, 2);
 	char *m = (char *) GC_MALLOC(20 * sizeof(char));
 	sprintf(m, "SCORE %04d", score);
+
 	hcenter_string(m);
 }
 
 void draw_arrow(key arrow) {
-	move_cursor(1, 5);
+	move_cursor(0, 4);
 
 	switch(arrow) {
 		case KEY_UP:
@@ -32,7 +33,7 @@ void draw_arrow(key arrow) {
 }
 
 void draw_hoot(int hoot) {
-	move_cursor(1, 7);
+	move_cursor(0, 6);
 
 	if (hoot == 0) {
 		hcenter_string("GOOD!");

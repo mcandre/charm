@@ -7,7 +7,7 @@ int main() {
 
 	int message_space = 3;
 
-	int x = 1, y = 1;
+	int x = 0, y = 0;
 
 	clear_screen();
 	move_cursor(x, y);
@@ -17,10 +17,10 @@ int main() {
 
 	while (k != KEY_ESCAPE && k != KEY_Q) {
 		switch (k) {
-			case KEY_UP: if (y > 1) { y--; } break;
-			case KEY_DOWN: if (y < get_height() - message_space) { y++; } break;
-			case KEY_RIGHT: if (x < get_width()) { x++; } break;
-			case KEY_LEFT: if (x > 1) { x--; } break;
+			case KEY_UP: if (y > 0) { y--; } break;
+			case KEY_DOWN: if (y < get_height() - message_space - 1) { y++; } break;
+			case KEY_RIGHT: if (x < get_width() - 1) { x++; } break;
+			case KEY_LEFT: if (x > 0) { x--; } break;
 			default:;
 		}
 

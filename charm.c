@@ -86,10 +86,14 @@ int get_y() {
 	return pos_y;
 }
 
+// (0, 0) = top left
+// (width - 1, 0) = top right
+// (0, height - 1) = bottom left
+// (width - 1, height - 1) = bottom right
 void move_cursor(int x, int y) {
 	pos_x = x;
 	pos_y = y;
-	printf("\033[%d;%dH", y, x);
+	printf("\033[%d;%dH", y + 1, x + 1);
 	fflush(stdout);
 }
 
@@ -118,7 +122,7 @@ void hcenter_string(char *s) {
 }
 
 void vcenter_string(char *s) {
-	move_cursor((get_width() - strlen(s))/2, get_height()/2);
+	move_cursor((get_width() - strlen(s))/2 - 1, get_height()/2 - 1);
 	blot_string(s);
 }
 
@@ -136,12 +140,12 @@ void start_charm() {
 	echo_off();
 	raw_on();
 	blocking_off();
-	move_cursor(1, 1);
+	move_cursor(0, 0);
 	clear_screen();
 }
 
 void end_charm() {
-	move_cursor(1, 1);
+	move_cursor(0, 0);
 	clear_screen();
 	blocking_on();
 	raw_off();
