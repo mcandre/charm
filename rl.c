@@ -3,17 +3,21 @@
 #include <stdio.h>
 
 int main() {
+	int message_space, x = 0, y = 0;
+
+	key k;
+
+	char *message;
+
 	start_charm();
 
-	int message_space = 3;
-
-	int x = 0, y = 0;
+	message_space = 3;
 
 	clear_screen();
 	move_cursor(x, y);
 	blot_char('@');
 
-	key k = get_key();
+	k = get_key();
 
 	while (k != KEY_ESCAPE && k != KEY_Q) {
 		switch (k) {
@@ -26,13 +30,18 @@ int main() {
 
 		clear_screen();
 
-		char *message = (char *) malloc(20 * sizeof(char));
-		sprintf(message, "Cursor: (%d, %d)", get_x(), get_y());
-		move_cursor(0, get_height());
-		hcenter_string(message);
+		message = (char *) malloc(20 * sizeof(char));
 
-		move_cursor(x, y);
-		blot_char('@');
+		if (message != NULL) {
+			(void) snprintf(message, 20, "Cursor: (%d, %d)", get_x(), get_y());
+			move_cursor(0, get_height());
+			hcenter_string(message);
+
+			free(message);
+
+			move_cursor(x, y);
+			blot_char('@');
+		}
 
 		k = get_key();
 	}

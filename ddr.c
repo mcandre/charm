@@ -4,15 +4,17 @@
 #include <stdlib.h>
 #include <time.h>
 
-void draw_score(int score) {
+static void draw_score(int score) {
+	char *m;
+
 	move_cursor(0, 2);
-	char *m = (char *) GC_MALLOC(20 * sizeof(char));
-	sprintf(m, "SCORE %04d", score);
+	m = (char *) GC_MALLOC(20 * sizeof(char));
+	(void) snprintf(m, 20, "SCORE %04d", score);
 
 	hcenter_string(m);
 }
 
-void draw_arrow(key arrow) {
+static void draw_arrow(key arrow) {
 	move_cursor(0, 4);
 
 	switch(arrow) {
@@ -32,7 +34,7 @@ void draw_arrow(key arrow) {
 	}
 }
 
-void draw_hoot(int hoot) {
+static void draw_hoot(int hoot) {
 	move_cursor(0, 6);
 
 	if (hoot == 0) {
@@ -44,7 +46,11 @@ void draw_hoot(int hoot) {
 }
 
 int main() {
-	srand(time(NULL));
+	int score, delta;
+
+	key arrow, k;
+
+	srand((unsigned int) time(NULL));
 
 	GC_INIT();
 
@@ -52,12 +58,12 @@ int main() {
 
 	hcenter_string("DDR: How fast can you play?");
 
-	int score = 0;
-	int delta = 0;
+	score = 0;
+	delta = 0;
 
-	key arrow = KEY_UP + (rand() % 4);
+	arrow = KEY_UP + (rand() % 4);
 
-	key k = KEY_UNKNOWN;
+	k = KEY_UNKNOWN;
 
 	while(k != KEY_ESCAPE && k != KEY_Q) {
 		draw_score(score);
