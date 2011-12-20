@@ -1,10 +1,10 @@
-charm - a minimal ncurses copy
+# charm - a minimal ncurses copy
 
-REQUIREMENTS
+## REQUIREMENTS
 
  - [Boehm GC](http://www.hpl.hp.com/personal/Hans_Boehm/gc/)
 
-EXAMPLE
+## EXAMPLE
 
 	$ make
 	$ ./hellocharm
