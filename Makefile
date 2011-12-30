@@ -1,4 +1,4 @@
-LGC=-lgc
+LGC=-I/usr/include/gc -lgc
 
 all: hellocharm
 
