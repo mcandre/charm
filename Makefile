@@ -24,6 +24,9 @@ uninstall:
 
 clean:
 	-rm rl
+	-rm rl.exe
 	-rm ddr
+	-rm ddr.exe
 	-rm hellocharm
+	-rm hellocharm.exe
 	-rm *.o
