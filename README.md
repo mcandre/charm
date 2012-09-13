@@ -1,10 +1,16 @@
-charm - a minimal ncurses copy
+# charm - a minimal ncurses copy
 
-REQUIREMENTS
+## REQUIREMENTS
+
+### Ubuntu
+
+ - libgc-dev
+
+### Mac OS X, Windows
 
  - [Boehm GC](http://www.hpl.hp.com/personal/Hans_Boehm/gc/)
 
-EXAMPLE
+## EXAMPLE
 
 	$ make
 	$ ./hellocharm
