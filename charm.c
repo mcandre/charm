@@ -46,7 +46,7 @@ void cursor_on(void) {
 void echo_off(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
-  term.c_lflag &= ~ECHO;
+  term.c_lflag &= (unsigned long) ~ECHO;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
@@ -60,7 +60,7 @@ void echo_on(void) {
 void raw_on(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
-  term.c_lflag &= ~ICANON;
+  term.c_lflag &= (unsigned long) ~ICANON;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
@@ -305,7 +305,7 @@ key get_key(void) {
 
   char c = '\0';
 
-  int n = 0;
+  ssize_t n = 0;
 
   // Read at least one character.
   while (n < 1) {
