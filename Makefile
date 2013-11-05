@@ -23,6 +23,9 @@ uninstall:
 	-rm /usr/include/charm.c
 	-rm /usr/include/charm.h
 
+lint:
+	splint *.c *.h -preproc
+
 clean:
 	-rm *.exe
 	-rm *.o
