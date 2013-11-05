@@ -1,18 +1,19 @@
-LGC=-I/usr/include/gc -lgc
+CC=gcc
+FLAGS=-Wall -Wextra
 
-all: hellocharm
+all: hellocharm ddr rl
 
 charm.o: charm.c charm.h
-	gcc -c charm.c charm.h
+	$(CC) -c charm.c charm.h
 
 hellocharm: hellocharm.c charm.c charm.h
-	gcc -o hellocharm hellocharm.c charm.c charm.h -Wall
+	$(CC) $(FLAGS) -o hellocharm hellocharm.c charm.c
 
 ddr: ddr.c charm.c charm.h
-	gcc -o ddr ddr.c charm.c charm.h -Wall $(LGC)
+	$(CC) $(FLAGS) -o ddr ddr.c charm.c -lgc
 
 rl: rl.c charm.c charm.h
-	gcc -o rl rl.c charm.c charm.h -Wall $(LGC)
+	$(CC) $(FLAGS) -o rl rl.c charm.c -lgc
 
 install: charm.c charm.h
 	cp charm.h /usr/include
@@ -23,10 +24,8 @@ uninstall:
 	-rm /usr/include/charm.h
 
 clean:
-	-rm rl
-	-rm rl.exe
-	-rm ddr
-	-rm ddr.exe
-	-rm hellocharm
-	-rm hellocharm.exe
+	-rm *.exe
 	-rm *.o
+	-rm rl
+	-rm ddr
+	-rm hellocharm
