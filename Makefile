@@ -1,5 +1,5 @@
 CC=clang
-FLAGS=-Wall -Wextra -Wmost -Weverything
+FLAGS=-Wall -Wextra -Wmost -Weverything -Wno-switch-enum
 
 all: hellocharm ddr rl
 
