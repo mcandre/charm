@@ -19,77 +19,77 @@
 int pos_x;
 int pos_y;
 
-int get_width() {
+int get_width(void) {
   struct winsize ws;
   (void) ioctl(0, TIOCGWINSZ, &ws);
 
   return (int) ws.ws_col;
 }
 
-int get_height() {
+int get_height(void) {
   struct winsize ws;
   (void) ioctl(0, TIOCGWINSZ, &ws);
 
   return (int) ws.ws_row;
 }
 
-void cursor_off() {
+void cursor_off(void) {
   printf("\033[?25l");
   (void) fflush(stdout);
 }
 
-void cursor_on() {
+void cursor_on(void) {
   printf("\033[?25h");
   (void) fflush(stdout);
 }
 
-void echo_off() {
+void echo_off(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
   term.c_lflag &= ~ECHO;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
-void echo_on() {
+void echo_on(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
   term.c_lflag |= ECHO;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
-void raw_on() {
+void raw_on(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
   term.c_lflag &= ~ICANON;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
-void raw_off() {
+void raw_off(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
   term.c_lflag |= ICANON;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
-void blocking_off() {
+void blocking_off(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
   term.c_cc[VMIN] = (cc_t) 0;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
-void blocking_on() {
+void blocking_on(void) {
   struct termios term;
   (void) tcgetattr(fileno(stdout), &term);
   term.c_cc[VMIN] = (cc_t) 1;
   (void) tcsetattr(fileno(stdout), TCSAFLUSH, &term);
 }
 
-int get_x() {
+int get_x(void) {
   return pos_x;
 }
 
-int get_y() {
+int get_y(void) {
   return pos_y;
 }
 
@@ -133,17 +133,17 @@ void vcenter_string(char *s) {
   blot_string(s);
 }
 
-void clear_screen() {
+void clear_screen(void) {
   printf("\033[2J");
   (void) fflush(stdout);
 }
 
-void handle_signal(int __attribute((unused)) signal) {
+void __attribute((noreturn)) handle_signal(int __attribute((unused)) signal) {
   end_charm();
   exit(0);
 }
 
-void start_charm() {
+void start_charm(void) {
   (void) signal(SIGINT, handle_signal);
 
   cursor_off();
@@ -154,7 +154,7 @@ void start_charm() {
   clear_screen();
 }
 
-void end_charm() {
+void end_charm(void) {
   move_cursor(0, 0);
   clear_screen();
   blocking_on();
@@ -288,7 +288,7 @@ key parse_key(char *buf) {
   }
 }
 
-key get_key() {
+key get_key(void) {
   int i;
 
   char *buf = (char *) malloc(3 * sizeof(char));
@@ -303,7 +303,7 @@ key get_key() {
 
   i = 0;
 
-  char c;
+  char c = '\0';
 
   int n = 0;
 

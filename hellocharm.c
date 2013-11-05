@@ -3,17 +3,17 @@
 #include <string.h>
 
 int main() {
-	start_charm();
+  start_charm();
 
-	vcenter_string("Hello Charm! Press Escape, q, or Control-C to quit.");
+  vcenter_string("Hello Charm! Press Escape, q, or Control-C to quit.");
 
-	key k = KEY_UNKNOWN;
+  key k = KEY_UNKNOWN;
 
-	while(k != KEY_ESCAPE && k != KEY_Q) {
-		k = get_key();
-	}
+  while(k != KEY_ESCAPE && k != KEY_Q) {
+    k = get_key();
+  }
 
-	end_charm();
+  end_charm();
 
-	return 0;
+  return 0;
 }

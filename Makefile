@@ -1,5 +1,5 @@
-CC=gcc
-FLAGS=-Wall -Wextra
+CC=clang
+FLAGS=-Wall -Wextra -Wmost -Weverything
 
 all: hellocharm ddr rl
 
