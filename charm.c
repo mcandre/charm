@@ -138,7 +138,7 @@ void clear_screen(void) {
   (void) fflush(stdout);
 }
 
-void __attribute((noreturn)) handle_signal(int __attribute((unused)) signal) {
+void __attribute__((noreturn)) handle_signal(int __attribute__((unused)) signal) {
   end_charm();
   exit(0);
 }
