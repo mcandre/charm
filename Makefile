@@ -24,7 +24,7 @@ uninstall:
 	-rm /usr/include/charm.h
 
 lint:
-	splint *.c *.h -preproc
+	splint *.c *.h
 
 clean:
 	-rm *.exe
