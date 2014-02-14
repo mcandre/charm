@@ -1,3 +1,5 @@
+// Copyright (C) YelloSoft
+
 #include "charm.h"
 #include <sys/ioctl.h>
 #include <termios.h>
@@ -164,7 +166,7 @@ void end_charm(void) {
 }
 
 key parse_key(char *buf) {
-  switch(buf[0]) {
+  switch (buf[0]) {
     case '\x7f':
     case '\b': return KEY_BACKSPACE;
     case '\t': return KEY_TAB;
@@ -273,10 +275,10 @@ key parse_key(char *buf) {
     case '~': return KEY_TILDE;
 
     case '\x1b':
-      switch(buf[1]) {
+      switch (buf[1]) {
         case '\0': return KEY_ESCAPE;
         case '[':
-          switch(buf[2]) {
+          switch (buf[2]) {
             case 'A': return KEY_UP;
             case 'B': return KEY_DOWN;
             case 'C': return KEY_RIGHT;

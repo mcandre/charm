@@ -1,3 +1,5 @@
+// Copyright (C) YelloSoft
+
 #include "charm.h"
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,3 +1,5 @@
+// Copyright (C) YelloSoft
+
 #include "charm.h"
 #include <stdio.h>
 #include <string.h>
@@ -9,7 +11,7 @@ int main() {
 
   key k = KEY_UNKNOWN;
 
-  while(k != KEY_ESCAPE && k != KEY_Q) {
+  while (k != KEY_ESCAPE && k != KEY_Q) {
     k = get_key();
   }
 

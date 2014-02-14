@@ -1,42 +1,40 @@
 # charm - a minimal ncurses copy
 
-## REQUIREMENTS
+# EXAMPLE
 
-### Ubuntu
+    $ make
 
- - libgc-dev
 
-### Mac OS X, Windows
 
- - [Boehm GC](http://www.hpl.hp.com/personal/Hans_Boehm/gc/)
 
-## EXAMPLE
 
-	$ make
-	$ ./hellocharm
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	                                     Hello Charm! Press Escape, q, or Control-C to quit.
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	q
-	$
+
+
+
+
+
+
+                                     Hello Charm! Press Escape, q, or Control-C to quit.
+
+
+
+
+
+
+
+
+
+
+
+
+    q
+    $
+
+# REQUIREMENTS
+
+* [boemgc](http://www.hpl.hp.com/personal/Hans_Boehm/gc/)
+
+## Optional
+
+* [splint](http://www.splint.org/)
+* [vera++](https://bitbucket.org/verateam/vera/wiki/Home)

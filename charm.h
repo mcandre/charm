@@ -1,6 +1,8 @@
 #ifndef CHARM_HEADER
 #define CHARM_HEADER
 
+// Copyright (C) YelloSoft
+
 #define CHARM_VERSION "0.0.1"
 
 extern int pos_x;

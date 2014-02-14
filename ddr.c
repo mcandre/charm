@@ -1,3 +1,5 @@
+// Copyright (C) YelloSoft
+
 #include "charm.h"
 #include <gc.h>
 #include <stdio.h>
@@ -17,7 +19,7 @@ static void draw_score(int score) {
 static void draw_arrow(key arrow) {
   move_cursor(0, 4);
 
-  switch(arrow) {
+  switch (arrow) {
     case KEY_UP:
       hcenter_string("^");
       break;
@@ -65,7 +67,7 @@ int main() {
 
   k = KEY_UNKNOWN;
 
-  while(k != KEY_ESCAPE && k != KEY_Q) {
+  while (k != KEY_ESCAPE && k != KEY_Q) {
     draw_score(score);
 
     draw_arrow(arrow);
