@@ -34,6 +34,9 @@ vera++:
 
 lint: splint vera++
 
+valgrind: $(BIN)
+	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --track-fds=yes --dsymutil=yes echo q | ./hellocharm
+
 churn:
 	bundle exec churn
 
