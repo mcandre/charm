@@ -40,14 +40,21 @@
 * [vera++](https://bitbucket.org/verateam/vera/wiki/Home)
 * [valgrind](http://www.valgrind.org/)
 
-# LINTING
+# DEVELOPMENT
+
+## Spell Check
+
+    $ aspelllint
+    ...
+
+## Linting
 
 Keep the code tidy:
 
     $ make lint
     ...
 
-# GRINDING
+## Grinding
 
 Eliminate memory leaks:
 
