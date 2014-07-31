@@ -1,5 +1,7 @@
 *.exe
 *.o
+Thumbs.db
+.DS_Store
 *.dSYM/
 Gemfile.lock
 tmp/
