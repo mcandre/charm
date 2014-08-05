@@ -27,9 +27,9 @@ int get_x(void);
 int get_y(void);
 void move_cursor(int x, int y);
 void blot_char(char c);
-void blot_string(char *s);
-void hcenter_string(char *s);
-void vcenter_string(char *s);
+void blot_string(const char *s);
+void hcenter_string(const char *s);
+void vcenter_string(const char *s);
 
 void clear_screen(void);
 

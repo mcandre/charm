@@ -118,19 +118,19 @@ void blot_char(char c) {
   }
 }
 
-void blot_string(char *s) {
+void blot_string(const char *s) {
   int i;
   for (i = 0; i < (int) strlen(s); i++) {
     blot_char(s[i]);
   }
 }
 
-void hcenter_string(char *s) {
+void hcenter_string(const char *s) {
   move_cursor((get_width() - (int) strlen(s))/2, pos_y);
   blot_string(s);
 }
 
-void vcenter_string(char *s) {
+void vcenter_string(const char *s) {
   move_cursor((get_width() - (int) strlen(s))/2 - 1, get_height()/2 - 1);
   blot_string(s);
 }
