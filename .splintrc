@@ -1,0 +1,10 @@
++warning-stream-stdout
++skip-sys-headers
++posixlib
+-preproc
+-exportlocal
+-unrecog
+-usedef
+-compdef
+-type
+-noeffect

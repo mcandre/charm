@@ -140,7 +140,7 @@ void clear_screen(void) {
   (void) fflush(stdout);
 }
 
-void __attribute__((noreturn)) handle_signal(int __attribute__((unused)) signal) {
+void __attribute__((noreturn)) handle_signal(int __attribute__((unused)) /*@unused@*/ signal) {
   end_charm();
   exit(0);
 }
@@ -286,6 +286,7 @@ key parse_key(char *buf) {
           }
       }
 
+    /*@fallthrough@*/
     default: return KEY_UNKNOWN;
   }
 }
