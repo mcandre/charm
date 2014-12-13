@@ -2,7 +2,8 @@
 
 # EXAMPLE
 
-    $ make
+```
+$ make
 
 
 
@@ -14,7 +15,7 @@
 
 
 
-                                     Hello Charm! Press Escape, q, or Control-C to quit.
+                                 Hello Charm! Press Escape, q, or Control-C to quit.
 
 
 
@@ -27,8 +28,9 @@
 
 
 
-    q
-    $
+q
+$
+```
 
 # REQUIREMENTS
 
@@ -44,19 +46,25 @@
 
 ## Spell Check
 
-    $ aspelllint
-    ...
+```
+$ aspelllint
+...
+```
 
 ## Linting
 
 Keep the code tidy:
 
-    $ make lint
-    ...
+```
+$ make lint
+...
+```
 
 ## Grinding
 
 Eliminate memory leaks:
 
-    $ make valgrind
-    ...
+```
+$ make valgrind
+...
+```
