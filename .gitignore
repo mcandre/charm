@@ -9,3 +9,4 @@ hellocharm
 ddr
 rl
 node_modules/
+*.orig

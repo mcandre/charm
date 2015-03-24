@@ -20,19 +20,24 @@ static void draw_arrow(key arrow) {
   move_cursor(0, 4);
 
   switch (arrow) {
-    case KEY_UP:
-      hcenter_string("^");
-      break;
-    case KEY_DOWN:
-      hcenter_string("v");
-      break;
-    case KEY_RIGHT:
-      hcenter_string(">");
-      break;
-    case KEY_LEFT:
-      hcenter_string("<");
-      break;
-    default:;
+  case KEY_UP:
+    hcenter_string("^");
+    break;
+
+  case KEY_DOWN:
+    hcenter_string("v");
+    break;
+
+  case KEY_RIGHT:
+    hcenter_string(">");
+    break;
+
+  case KEY_LEFT:
+    hcenter_string("<");
+    break;
+
+  default:
+    ;
   }
 }
 
@@ -41,8 +46,7 @@ static void draw_hoot(int hoot) {
 
   if (hoot == 0) {
     hcenter_string("GOOD!");
-  }
-  else {
+  } else {
     hcenter_string("BAD! ");
   }
 }
@@ -78,8 +82,7 @@ int main() {
 
     if (delta == 0) {
       score++;
-    }
-    else {
+    } else {
       score--;
     }
 

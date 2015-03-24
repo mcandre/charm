@@ -23,11 +23,36 @@ int main() {
 
   while (k != KEY_ESCAPE && k != KEY_Q) {
     switch (k) {
-      case KEY_UP: if (y > 0) { y--; } break;
-      case KEY_DOWN: if (y < get_height() - message_space - 1) { y++; } break;
-      case KEY_RIGHT: if (x < get_width() - 1) { x++; } break;
-      case KEY_LEFT: if (x > 0) { x--; } break;
-      default:;
+    case KEY_UP:
+      if (y > 0) {
+        y--;
+      }
+
+      break;
+
+    case KEY_DOWN:
+      if (y < get_height() - message_space - 1) {
+        y++;
+      }
+
+      break;
+
+    case KEY_RIGHT:
+      if (x < get_width() - 1) {
+        x++;
+      }
+
+      break;
+
+    case KEY_LEFT:
+      if (x > 0) {
+        x--;
+      }
+
+      break;
+
+    default:
+      ;
     }
 
     clear_screen();
