@@ -1,3 +1,4 @@
+infer-out/
 *.exe
 *.o
 Thumbs.db
@@ -9,4 +10,3 @@ hellocharm
 ddr
 rl
 node_modules/
-*.orig

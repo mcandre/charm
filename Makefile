@@ -44,7 +44,10 @@ astyle:
 clean-astyle:
 	-find . -type f -name "*.orig" -exec rm {} \;
 
-lint: splint vera++ lili editorconfig astyle
+infer: clean
+	infer -- make
+
+lint: splint vera++ lili editorconfig astyle #infer
 
 valgrind: $(BIN)
 	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --track-fds=yes --dsymutil=yes echo q | ./hellocharm
