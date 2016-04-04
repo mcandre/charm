@@ -3,7 +3,8 @@
 # EXAMPLE
 
 ```
-$ make
+$ cmake . && make
+$ bin/hellocharm
 
 
 
@@ -34,7 +35,11 @@ $
 
 # REQUIREMENTS
 
+* [clang](http://clang.llvm.org/)
 * [boemgc](http://www.hpl.hp.com/personal/Hans_Boehm/gc/)
+* [cmake](https://cmake.org/)
+
+E.g. `brew install boehmgc cmake`
 
 ## Optional
 
@@ -58,14 +63,5 @@ Keep the code tidy:
 
 ```
 $ make lint
-...
-```
-
-## Grinding
-
-Eliminate memory leaks:
-
-```
-$ make valgrind
 ...
 ```
