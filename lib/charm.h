@@ -1,5 +1,4 @@
-#ifndef CHARM_HEADER
-#define CHARM_HEADER
+#pragma once
 
 // Copyright (C) YelloSoft
 
@@ -156,5 +155,3 @@ typedef enum {
 
 key parse_key(char *buf);
 key get_key(void);
-
-#endif
